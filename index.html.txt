@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Only for Shivani ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    .container {
+      max-width: 750px;
+      padding: 25px;
+      animation: fadeIn 1.5s ease;
+    }
+    h1, h2 {
+      font-weight: 600;
+    }
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    button {
+      padding: 12px 28px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: #ff4d6d;
+      color: white;
+      transition: all 0.2s;
+      position: relative;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .hidden { display: none; }
+    .bg {
+      background: url('hands.jpg') center/cover no-repeat;
+    }
+    audio { display: none; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body><audio id="music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio><!-- PASSWORD LOCK --><div class="container" id="lock">
+  <h1>🔐 Sirf Shivani ke liye</h1>
+  <p>Yeh jagah sabke liye nahi hai…<br>agar tum Shivani ho, tabhi aage badho 💖</p>
+  <input type="password" id="pass" placeholder="Enter secret" />
+  <br>
+  <button onclick="unlock()">Enter ❤️</button>
+  <p id="lockMsg"></p>
+</div><!-- STEP 1 --><div class="container hidden" id="step1">
+  <h1>Shivani ❤️</h1>
+  <p>Yeh website koi normal cheez nahi hai…<br>yeh mere dil ka wo hissa hai jo sirf tumhare liye hai.</p>
+  <button onclick="goToStep2()">Hyy 👋</button>
+</div><!-- STEP 2 AGE --><div class="container hidden" id="step2">
+  <h2>Achha ek baat batao 😊</h2>
+  <p>Tumhari age kya hai?</p>
+  <input type="number" />
+  <br>
+  <button onclick="goToStep3()">Aage chalo 💕</button>
+</div><!-- STEP 3 NAME --><div class="container hidden" id="step3">
+  <h2>Main tumhe kis naam se bulaun? 💖</h2>
+  <button onclick="showLove()">Bukiii</button>
+  <button onclick="showLove()">Siviii</button>
+  <p id="loveText"></p>
+  <button class="hidden" id="nextBtn" onclick="goToStep4()">Next ➜</button>
+</div><!-- STEP 4 QUESTION --><div class="container hidden bg" id="step4">
+  <h2>Ek sachcha sawal hai… 🥺</h2>
+  <p>Kya tum mujhse pyaar karti ho?</p>
+  <button onclick="yesLove()">YES ❤️</button>
+  <button id="noBtn" onmouseover="runAway()" onclick="noLove()">NO 😏</button>
+  <p id="answer"></p>
+</div><!-- STEP 5 PROPOSAL --><div class="container hidden" id="step5">
+  <h1>Ek last baat… 🥺❤️</h1>
+  <p>
+    Shayad perfect words mere paas na ho…<br>
+    par jo feel hai, woh bilkul sachchi hai.
+  </p>
+  <p>
+    2026 aane wala hai…<br>
+    main chahta hoon ki hum usse ek <b>nayi shuruaat</b> ke saath welcome karein 🌙✨
+  </p>
+  <p>
+    bina past ke darr ke,<br>
+    bina overthinking ke,<br>
+    sirf <b>tum aur main</b> 🤍
+  </p>
+  <h2>Kya hum apni nayi shuruaat kar sakte hain? 💍</h2>
+  <button onclick="finalYes()">YES ❤️</button>
+  <button id="finalNo" onmouseover="runAwayFinal()">NO 😏</button>
+</div><!-- FINAL END --><div class="container hidden" id="finalEnd">
+  <h1>💍 Will you be mine, Shivani? ❤️</h1>
+  <p>
+    Yeh sirf proposal nahi hai…<br>
+    yeh ek promise hai.
+  </p>
+  <p>
+    Main wada karta hoon —<br>
+    respect, honesty aur pyaar ka 🤍<br>
+    har din, har saal, har version mein.
+  </p>
+  <p>
+    2026 hum dono ke liye ho —<br>
+    ek nayi shuruaat,<br>
+    ek naya safar ✨
+  </p>
+  <p id="counter"></p>
+  <p style="margin-top:20px; font-size:18px;">
+    — Hamesha tumhara,<br><b>Jatin</b>
+  </p>
+</div><script>
+  const meetDate = new Date('2025-08-28'); // CHANGE DATE
+
+  function unlock() {
+    const pass = document.getElementById('pass').value;
+    if (pass === 'shivani') {
+      lock.classList.add('hidden');
+      step1.classList.remove('hidden');
+      document.getElementById('music').play();
+    } else {
+      lockMsg.innerHTML = 'Sorry… yeh jagah sirf Shivani ke liye hai ❤️';
+    }
+  }
+  function goToStep2() {
+    step1.classList.add('hidden');
+    step2.classList.remove('hidden');
+  }
+  function goToStep3() {
+    step2.classList.add('hidden');
+    step3.classList.remove('hidden');
+  }
+  function showLove() {
+    loveText.innerHTML = 'I love you baby ❤️<br>Oh my girl, your man loves you endlessly.';
+    nextBtn.classList.remove('hidden');
+  }
+  function goToStep4() {
+    step3.classList.add('hidden');
+    step4.classList.remove('hidden');
+  }
+  function yesLove() {
+    step4.classList.add('hidden');
+    step5.classList.remove('hidden');
+  }
+
+  function finalYes() {
+    step5.classList.add('hidden');
+    finalEnd.classList.remove('hidden');
+    updateCounter();
+  }
+
+  function runAwayFinal() {
+    const btn = document.getElementById('finalNo');
+    btn.style.top = Math.random() * 200 - 100 + 'px';
+    btn.style.left = Math.random() * 200 - 100 + 'px';
+  }
+  function noLove() {
+    answer.innerHTML = 'Error 404 😤<br>Yeh answer accept nahi hota baby ❤️';
+  }
+  function runAway() {
+    const btn = document.getElementById('noBtn');
+    btn.style.top = Math.random() * 200 - 100 + 'px';
+    btn.style.left = Math.random() * 200 - 100 + 'px';
+  }
+  function updateCounter() {
+    const now = new Date();
+    const diff = Math.floor((now - meetDate) / (1000 * 60 * 60 * 24));
+    counter.innerHTML = `💖 ${diff} din ho gaye jab se meri zindagi mein tum aayi ho.<br>Aur main har din tumhe chunta hoon.`;
+  } din ho gaye jab se meri zindagi mein tum aayi ho.`;
+  }
+</script></body>
+</html>
